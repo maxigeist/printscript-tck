@@ -7,6 +7,7 @@ import util.MockInputStream;
 import util.PrintCollector;
 import util.PrintCounter;
 
+import java.io.IOException;
 import java.util.Objects;
 
 import static java.util.Collections.emptyList;
@@ -22,7 +23,7 @@ public class InterpreterLargeFileTest {
     private final PrintScriptInterpreter interpreter = new CustomImplementationFactory().interpreter();
 
     @Test
-    public void testWithCounter() {
+    public void testWithCounter() throws IOException {
         final PrintCounter printCounter = new PrintCounter(message -> Objects.equals(message, MESSAGE));
         final ErrorCollector errorCollector = new ErrorCollector();
         interpreter.execute(new MockInputStream(LINE, NUMBER_OF_LINES), "1.0", printCounter, errorCollector, (ignored) -> "");
@@ -32,7 +33,7 @@ public class InterpreterLargeFileTest {
     }
 
     @Test
-    public void testWithCollector()  {
+    public void testWithCollector() throws IOException {
         final PrintCollector printCollector = new PrintCollector();
         final ErrorCollector errorCollector = new ErrorCollector();
         final var inputStream = new MockInputStream(LINE, NUMBER_OF_LINES);

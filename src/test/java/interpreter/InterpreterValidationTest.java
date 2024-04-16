@@ -59,7 +59,7 @@ public class InterpreterValidationTest {
     }
 
     @Test
-    public void testValidation() throws FileNotFoundException {
+    public void testValidation() throws IOException {
         ErrorCollector errorCollector = new ErrorCollector();
         final var fileInputStream = new FileInputStream(file);
         interpreter.execute(fileInputStream, version, (msg) -> {}, errorCollector, (name) -> name);

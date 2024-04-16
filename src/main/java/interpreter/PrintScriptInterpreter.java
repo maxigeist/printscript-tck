@@ -1,6 +1,7 @@
 package interpreter;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 
@@ -13,5 +14,5 @@ public interface PrintScriptInterpreter {
      * @param handler interface where all syntax and semantic error will be reported.
      * @param provider interface that provides input values during the execution.
      */
-    void execute(InputStream src, String version, PrintEmitter emitter, ErrorHandler handler, InputProvider provider);
+    void execute(InputStream src, String version, PrintEmitter emitter, ErrorHandler handler, InputProvider provider) throws IOException;
 }
